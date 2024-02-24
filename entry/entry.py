@@ -10,6 +10,20 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello from Flask!'
 
+def analyze_string(input_string):
+    # Find the index of the first "%"
+    first_percent_index = input_string.find("%")
+    
+    if first_percent_index != -1:
+        # Remove everything before the first "%"
+        modified_string = input_string[first_percent_index+1:]
+        
+        # Remove all "%" and "subs lolz" from the modified string
+        modified_string = modified_string.replace("%", "").replace("Вот мой пропагандистский комментарий:", "")
+        
+        return modified_string
+    else:
+        return "No '%' found in the input string"
 
 @app.route('/comment/<name>')
 def comment(name):
