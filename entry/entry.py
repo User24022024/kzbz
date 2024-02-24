@@ -1,12 +1,15 @@
-
+from flask_cors import CORS, cross_origin
 # A very simple Flask Hello World app for you to get started with...
 
 from flask import Flask, request
 import g4f
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
+@cross_origin()
 def hello_world():
     return 'Hello from Flask!'
 
@@ -26,6 +29,7 @@ def analyze_string(input_string):
         return "No '%' found in the input string"
 
 @app.route('/comment/<name>')
+@cross_origin()
 def comment(name):
     pon = f"{request.view_args['name']}"
     try:
