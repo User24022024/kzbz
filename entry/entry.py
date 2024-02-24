@@ -55,4 +55,4 @@ def comment(name):
     except:
         return "Не хочу говорить об этом!"
     print(response)
-    return response
+    return analyze_string(response)
